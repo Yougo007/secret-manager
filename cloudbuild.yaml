@@ -5,7 +5,7 @@ steps:
   secretEnv: ['USERNAME', 'PASSWORD']
 availableSecrets:
   secretManager:
-  - versionName: yougo-projects-labs/yougo-projects-labs/secrets/DOCKER_PASSWORD_SECRET_NAME/versions/DOCKER_PASSWORD_SECRET_VERSION
+  - versionName: yougo-projects-labs/yougo-projects-labs/secrets/USERNAME/versions/1
     env: 'PASSWORD'
-  - versionName: yougo-projects-labs/yougo-projects-labs/secrets/DOCKER_USERNAME_SECRET_NAME/versions/DOCKER_USERNAME_SECRET_VERSION
+  - versionName: yougo-projects-labs/yougo-projects-labs/secrets/USERNAME/versions/1
     env: 'USERNAME'
