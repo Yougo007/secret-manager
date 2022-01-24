@@ -16,17 +16,17 @@ steps:
   secretEnv: ['RABBITPW', 'RABBITMQHOST', 'ESAPI', 'ESCLOUDID', 'ESAPIID', 'DATABASEPW']
 availableSecrets:
    secretManager:
-   - versionName: projects/295102593288/secrets/rabbitmq-password/versions/3
+   - versionName: projects/yougo-projects-labs/secrets/rabbitmq-password/versions/3
      env: 'RABBITPW'
-   - versionName: projects/295102593288/secrets/rabbit-mq-host/versions/1
+   - versionName: projects/yougo-projects-labs/secrets/rabbit-mq-host/versions/1
      env: 'RABBITMQHOST'
-   - versionName: projects/295102593288/secrets/databasepw/versions/1
+   - versionName: projects/yougo-projects-labs/secrets/databasepw/versions/1
      env: 'DATABASEPW'
-   - versionName: projects/295102593288/secrets/es-api/versions/2
+   - versionName: projects/yougo-projects-labs/secrets/es-api/versions/2
      env: 'ESAPI'
-   - versionName: projects/295102593288/secrets/es-cloud-id/versions/1
+   - versionName: projects/yougo-projects-labs/secrets/es-cloud-id/versions/1
      env: 'ESCLOUDID'
-   - versionName: projects/295102593288/secrets/es-api-id/versions/1
+   - versionName: projects/yougo-projects-labs/secrets/es-api-id/versions/1
      env: 'ESAPIID'
 timeout: 2400s
 options:
