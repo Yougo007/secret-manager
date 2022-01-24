@@ -1,11 +1,33 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
+#- name: 'gcr.io/cloud-builders/docker'
+#  entrypoint: 'bash'
+#  args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
+#  secretEnv: ['USERNAME', 'PASSWORD']
+#availableSecrets:
+#  secretManager:
+#  - versionName: projects/yougo-projects-labs/secrets/USERNAME/versions/1
+#    env: 'PASSWORD'
+#  - versionName: projects/yougo-projects-labs/secrets/PASSWORD/versions/1
+#    env: 'USERNAME'
+- name: gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
-  secretEnv: ['USERNAME', 'PASSWORD']
+  #args: ['-c', 'gcloud secrets versions access 1 --secret="databasepw"']
+  args: ['-c', 'helm upgrade --install autobahn k8s/autobahn -f k8s/bots.yaml -n crawler --set rabbitpw=$$RABBITPW,rabbitMqHost=$$RABBITMQHOST,esApi=$$ESAPI,esCloudId=$$ESCLOUDID,esApiId=$$ESAPIID,imageTag=latest,dbpw=$$DATABASEPW']
+  secretEnv: ['RABBITPW', 'RABBITMQHOST', 'ESAPI', 'ESCLOUDID', 'ESAPIID', 'DATABASEPW']
 availableSecrets:
-  secretManager:
-  - versionName: projects/yougo-projects-labs/secrets/USERNAME/versions/1
-    env: 'PASSWORD'
-  - versionName: projects/yougo-projects-labs/secrets/PASSWORD/versions/1
-    env: 'USERNAME'
+   secretManager:
+   - versionName: projects/295102593288/secrets/rabbitmq-password/versions/3
+     env: 'RABBITPW'
+   - versionName: projects/295102593288/secrets/rabbit-mq-host/versions/1
+     env: 'RABBITMQHOST'
+   - versionName: projects/295102593288/secrets/databasepw/versions/1
+     env: 'DATABASEPW'
+   - versionName: projects/295102593288/secrets/es-api/versions/2
+     env: 'ESAPI'
+   - versionName: projects/295102593288/secrets/es-cloud-id/versions/1
+     env: 'ESCLOUDID'
+   - versionName: projects/295102593288/secrets/es-api-id/versions/1
+     env: 'ESAPIID'
+timeout: 2400s
+options:
+  machineType: E2_HIGHCPU_32
