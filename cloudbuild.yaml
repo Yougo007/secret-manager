@@ -16,9 +16,9 @@ steps:
   secretEnv: ['USERNAME', 'PASSWORD']
 availableSecrets:
    secretManager:
-   - versionName: projects/yougo-projects-labs/secrets/rabbitmq-password/versions/1
+   - versionName: projects/yougo-projects-labs/secrets/USERNAME/versions/1
      env: 'USERNAME'
-   - versionName: projects/yougo-projects-labs/secrets/rabbit-mq-host/versions/1
+   - versionName: projects/yougo-projects-labs/secrets/PASSWORD/versions/1
      env: 'PASSWORD'
 timeout: 2400s
 options:
