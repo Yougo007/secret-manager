@@ -13,7 +13,7 @@ steps:
   entrypoint: 'bash'
   #args: ['-c', 'gcloud secrets versions access 1 --secret="databasepw"']
   args: ['-c', 'helm upgrade --install autobahn k8s/autobahn -f k8s/bots.yaml -n crawler --set rabbitpw=$$RABBITPW,rabbitMqHost=$$RABBITMQHOST,esApi=$$ESAPI,esCloudId=$$ESCLOUDID,esApiId=$$ESAPIID,imageTag=latest,dbpw=$$DATABASEPW']
-  secretEnv: ['USERNAME', 'PASSWORD', 'ESAPI', 'ESCLOUDID', 'ESAPIID', 'DATABASEPW']
+  secretEnv: ['USERNAME', 'PASSWORD']
 availableSecrets:
    secretManager:
    - versionName: projects/yougo-projects-labs/secrets/rabbitmq-password/versions/1
