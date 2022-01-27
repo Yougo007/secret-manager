@@ -1,14 +1,14 @@
 steps:
-#- name: 'gcr.io/cloud-builders/docker'
-#  entrypoint: 'bash'
-#  args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
-#  secretEnv: ['USERNAME', 'PASSWORD']
-#availableSecrets:
-#  secretManager:
-#  - versionName: projects/yougo-projects-labs/secrets/USERNAME/versions/1
-#    env: 'PASSWORD'
-#  - versionName: projects/yougo-projects-labs/secrets/PASSWORD/versions/1
-#    env: 'USERNAME'
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
+  secretEnv: ['USERNAME', 'PASSWORD']
+availableSecrets:
+  secretManager:
+  - versionName: projects/yougo-projects-labs/secrets/USERNAME/versions/1
+    env: 'PASSWORD'
+  - versionName: projects/yougo-projects-labs/secrets/PASSWORD/versions/1
+    env: 'USERNAME'
 - name: gcr.io/cloud-builders/helm
   #entrypoint: 'bash'
   #args: ['-c', 'gcloud secrets versions access 1 --secret="databasepw"']
