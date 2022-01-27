@@ -10,6 +10,6 @@ availableSecrets:
      env: 'USERNAME'
    - versionName: projects/yougo-projects-labs/secrets/PASSWORD/versions/1
      env: 'PASSWORD'
-#timeout: 2400s
-#options:
-#  machineType: E2_HIGHCPU_32
+timeout: 2400s
+options:
+  machineType: E2_HIGHCPU_32
