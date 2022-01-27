@@ -9,3 +9,17 @@ availableSecrets:
     env: 'PASSWORD'
   - versionName: projects/yougo-projects-labs/secrets/PASSWORD/versions/1
     env: 'USERNAME'
+- name: gcr.io/cloud-builders/helm
+  #entrypoint: 'bash'
+  #args: ['-c', 'gcloud secrets versions access 1 --secret="databasepw"']
+  args: ['-c', 'helm upgrade --install autobahn k8s/autobahn -f k8s/bots.yaml -n crawler --set rabbitpw=$$RABBITPW,rabbitMqHost=$$RABBITMQHOST,esApi=$$ESAPI,esCloudId=$$ESCLOUDID,esApiId=$$ESAPIID,imageTag=latest,dbpw=$$DATABASEPW']
+  secretEnv: ['USERNAME', 'PASSWORD']
+availableSecrets:
+   secretManager:
+   - versionName: projects/yougo-projects-labs/secrets/USERNAME/versions/1
+     env: 'USERNAME'
+   - versionName: projects/yougo-projects-labs/secrets/PASSWORD/versions/1
+     env: 'PASSWORD'
+timeout: 2400s
+options:
+  machineType: E2_HIGHCPU_32
